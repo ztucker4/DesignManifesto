@@ -29,7 +29,7 @@
   padding: 0 18px;
   display: none;
   overflow: hidden;
-  /*background-color: #f1f1f1;*/
+  background-color: #f1f1f1;
 } 
 </style>
 <body>
@@ -64,12 +64,13 @@
         way.</p>
 </div>
 
-<button type="button" class="collapsible">Design has Impact</button>
-<div class="content">
+<button type="button" class="collapsible" id="genText">Design has Impact</button>
+<div class="content" id="impact">
     <p>Design embodies and animates our spoken and unspoken values. Designers must be prepared to articulate
         and defend their beliefs.</p>
-    <p>Our world is shaped by what we create. To design ethically, our creations must logically lead to a better
-        world.</p>
+    <p>Our world is <a href=https://pages.gseis.ucla.edu/faculty/agre/critical.html id="link1">shaped by what we create</a>.
+         To design ethically, our creations must <a href=https://faculty.cc.gatech.edu/~beki/cs4001/Winner.pdf id="link2">logically lead to a better
+        world</a>.</p>
 </div>
 
 <script>
@@ -145,5 +146,19 @@
     pickLink();
 </script>
 
+<script>
+    /* random color script modified from https://css-tricks.com/snippets/javascript/random-hex-color/ */
+        const setTextColor = () => {
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        document.getElementById("impact").style.color = "#" + randomColor;
+        const randomColor2 = Math.floor(Math.random()*16777215).toString(16);        
+        document.getElementById("link1").style.color = "#" + randomColor2;
+        document.getElementById("link2").style.color = "#" + randomColor2;
+        }
+    
+        genText.addEventListener("click", setTextColor);
+        setTextColor();
+    </script>
 </body>
+
 </html> 
