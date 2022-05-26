@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="">
 <style>
+/* collapsible code modified from W3Schools https://www.w3schools.com/howto/howto_js_collapsible.asp */
+ /* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 30px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+} 
 </style>
 <script src=""></script>
 <body>
@@ -12,15 +38,16 @@
 <h1>Design Manifesto</h1>
 <p><a href="basic.html">Click here for basic/unstyled version</a></p>
 
-<div class="">
- <h2>Design is Everywhere</h2>
- <p>Every human-made entity is a product of design, even if that design is unfinished, undocumented, or unacknowledged. 
-     Databases, building layouts, medical devices, video game UIs, military equipment&mdash;all these and more are the result of design processes, 
-     and should be considered as such.</p>
-</div>
 
-<div class="">
-    <h2>Design has Context</h2>
+<button type="button" class="collapsible">Design is Everywhere</button>
+<div class="content">
+    <p>Every human-made entity is a product of design, even if that design is unfinished, undocumented, or unacknowledged. 
+        Databases, building layouts, medical devices, video game UIs, military equipment&mdash;all these and more are the result of design processes, 
+        and should be considered as such.</p>
+</div> 
+
+<button type="button" class="collapsible">Design has Context</button>
+<div class="content">
     <p>Designed objects are made by a specific person or group, and exist in the world with other people and groups.
         Designers must be aware of their own positionality and the perspectives of all those affected by their output.</p>
     <p>Always ask: Who benefits from this design? Who is at risk? Who has been consulted, and who has been
@@ -29,22 +56,37 @@
         logical impossibility.</p>
 </div>
 
-
-<div class="">
-    <h2>Design is Playful</h2>
+<button type="button" class="collapsible">Design is Playful</button>
+<div class="content">
     <p>Limitless, blue-sky ideation is invaluable. Leave room to dream.</p>
     <p>Design is a valuable way to challenge our own assumptions, and to push others to see the world in a new
         way.</p>
 </div>
 
-<div class="">
-    <h2>Design has Impact</h2>
+<button type="button" class="collapsible">Design has Impact</button>
+<div class="content">
     <p>Design embodies and animates our spoken and unspoken values. Designers must be prepared to articulate
         and defend their beliefs.</p>
     <p>Our world is shaped by what we create. To design ethically, our creations must logically lead to a better
         world.</p>
 </div>
 
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+</script>
 
 </body>
 </html> 
