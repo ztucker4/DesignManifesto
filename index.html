@@ -29,20 +29,21 @@
   padding: 0 18px;
   display: none;
   overflow: hidden;
-  background-color: #f1f1f1;
+  /*background-color: #f1f1f1;*/
 } 
 </style>
-<script src=""></script>
 <body>
 
 <h1>Design Manifesto</h1>
-<p><a href="basic.html">Click here for basic/unstyled version</a></p>
+<p>This manifesto was created by Zo&euml; Tucker for IS 272: Human-Computer Interaction, Spring 2022 at UCLA.</p>
+<p>This is the "fancy" version of the page. Click on the section titles to expand and collapse them. Opening them multiple times may reveal changes.</p>
+<p><a href="basic.html">Click here for the basic/unstyled version.</a></p>
 
 
-<button type="button" class="collapsible">Design is Everywhere</button>
-<div class="content">
-    <p>Every human-made entity is a product of design, even if that design is unfinished, undocumented, or unacknowledged. 
-        Databases, building layouts, medical devices, video game UIs, military equipment&mdash;all these and more are the result of design processes, 
+<button type="button" class="collapsible" id="everywhere">Design is Everywhere</button>
+<div class="content" id="examples">
+    <p>Every human-made entity is a product of design, even if that design is unfinished, undocumented, or unacknowledged.</p> 
+    <p>Databases, building layouts, medical devices, video game UIs, military equipment&mdash;all these and more are the result of design processes, 
         and should be considered as such.</p>
 </div> 
 
@@ -56,8 +57,8 @@
         logical impossibility.</p>
 </div>
 
-<button type="button" class="collapsible">Design is Playful</button>
-<div class="content">
+<button type="button" id="genNew" class="collapsible">Design is Playful</button>
+<div class="content" id = "playful">
     <p>Limitless, blue-sky ideation is invaluable. Leave room to dream.</p>
     <p>Design is a valuable way to challenge our own assumptions, and to push others to see the world in a new
         way.</p>
@@ -86,6 +87,44 @@
         }
       });
     }
+</script>
+
+<script>
+/* random color script modified from https://css-tricks.com/snippets/javascript/random-hex-color/ */
+    const setBg = () => {
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    document.getElementById("playful").style.backgroundColor = "#" + randomColor;
+    }
+
+    genNew.addEventListener("click", setBg);
+    setBg();
+</script>
+
+<script>
+    const pickLink = () => {
+    let midText = "";
+    var r_text = new Array ();
+    r_text[0] = "All the leaves are brown";
+    r_text[1] = "And the sky is grey";
+    r_text[2] = "I've been for a walk";
+    r_text[3] = "On a winter's day";
+    r_text[4] = "I'd be safe and warm";
+    r_text[5] = "If I was in L.A.";
+    r_text[6] = "California dreaming, On such a winter's day";
+    for (i = 0; i < 5; i++) {
+        var random = Math.floor(Math.random() * r_text.length);
+        midText += r_text[random] + ", ";
+    }
+    var random = Math.floor(Math.random() * r_text.length);
+    midText += r_text[random]
+    let startText = "<p>Every human-made entity is a product of design, even if that design is unfinished, undocumented, or unacknowledged.</p> <p>Consider ";
+    let endText = "&mdash;all these and more are the result of design processes,and should be considered as such.</p>";
+    let fullText = startText.concat(midText, endText);
+    document.getElementById("examples").innerHTML=fullText;
+    }
+
+    everywhere.addEventListener("click", pickLink);
+    pickLink();
 </script>
 
 </body>
