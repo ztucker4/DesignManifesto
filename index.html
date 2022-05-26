@@ -101,24 +101,42 @@
 </script>
 
 <script>
+
+    function removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
+    }
+
     const pickLink = () => {
     let midText = "";
     var r_text = new Array ();
-    r_text[0] = "All the leaves are brown";
-    r_text[1] = "And the sky is grey";
-    r_text[2] = "I've been for a walk";
-    r_text[3] = "On a winter's day";
-    r_text[4] = "I'd be safe and warm";
-    r_text[5] = "If I was in L.A.";
-    r_text[6] = "California dreaming, On such a winter's day";
-    for (i = 0; i < 5; i++) {
+    r_text[0] = "databases";
+    r_text[1] = "home layouts";
+    r_text[2] = "medical devices";
+    r_text[3] = "video game UIs";
+    r_text[4] = "military equipment";
+    r_text[5] = "furniture";
+    r_text[6] = "computer input devices";
+    r_text[7] = "typefaces";
+    r_text[8] = "public transit systems";
+    r_text[9] = "art installations";
+    r_text[10] = "power plants";
+    r_text[11] = "school buildings";
+    r_text[12] = "websites";
+    r_text[13] = "clothing";
+    r_text[14] = "computer viruses";
+    for (i = 0; i < 3; i++) {
         var random = Math.floor(Math.random() * r_text.length);
         midText += r_text[random] + ", ";
+        removeItemOnce(r_text, r_text[random]);
     }
     var random = Math.floor(Math.random() * r_text.length);
     midText += r_text[random]
     let startText = "<p>Every human-made entity is a product of design, even if that design is unfinished, undocumented, or unacknowledged.</p> <p>Consider ";
-    let endText = "&mdash;all these and more are the result of design processes,and should be considered as such.</p>";
+    let endText = "&mdash;all these and more are the result of design processes, and should be considered as such.</p>";
     let fullText = startText.concat(midText, endText);
     document.getElementById("examples").innerHTML=fullText;
     }
