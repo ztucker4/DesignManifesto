@@ -36,7 +36,8 @@
 
 <h1>Design Manifesto</h1>
 <p>This manifesto was created by Zo&euml; Tucker for IS 272: Human-Computer Interaction, Spring 2022 at UCLA.</p>
-<p>This is the "fancy" version of the page. Click on the section titles to expand and collapse them. Opening them multiple times may reveal changes.</p>
+<p>This is the "fancy" version of the page. Click on the section titles to expand and collapse them. 
+    Opening them multiple times will reveal changes, which may make the content easier or harder to read.</p>
 <p><a href="basic.html">Click here for the basic/unstyled version.</a></p>
 
 
@@ -47,8 +48,8 @@
         and should be considered as such.</p>
 </div> 
 
-<button type="button" class="collapsible">Design has Context</button>
-<div class="content">
+<button type="button" class="collapsible" id="fontChoose">Design has Context</button>
+<div class="content" id="context">
     <p>Designed objects are made by a specific person or group, and exist in the world with other people and groups.
         Designers must be aware of their own positionality and the perspectives of all those affected by their output.</p>
     <p>Always ask: Who benefits from this design? Who is at risk? Who has been consulted, and who has been
@@ -74,6 +75,7 @@
 </div>
 
 <script>
+/*script for collapsibles, from W3Schools */
     var coll = document.getElementsByClassName("collapsible");
     var i;
     
@@ -91,6 +93,7 @@
 </script>
 
 <script>
+    /* background color changer for "playful" */
 /* random color script modified from https://css-tricks.com/snippets/javascript/random-hex-color/ */
     const setBg = () => {
     const randomColor = Math.floor(Math.random()*16777215).toString(16);
@@ -102,7 +105,7 @@
 </script>
 
 <script>
-
+    /*random text chooser for "Everywhere" */
     function removeItemOnce(arr, value) {
     var index = arr.indexOf(value);
     if (index > -1) {
@@ -147,6 +150,7 @@
 </script>
 
 <script>
+    /*text color chooser for "Impact"
     /* random color script modified from https://css-tricks.com/snippets/javascript/random-hex-color/ */
         const setTextColor = () => {
         const randomColor = Math.floor(Math.random()*16777215).toString(16);
@@ -158,7 +162,25 @@
     
         genText.addEventListener("click", setTextColor);
         setTextColor();
-    </script>
+</script>
+
+<script>
+    /* font chooser for "context" */
+    const setFont = () => {
+    var r_font = new Array ();
+    r_font[0] = "serif";
+    r_font[1] = "sans-serif";
+    r_font[2] = "monospace";
+    r_font[3] = "cursive";
+    /* r_font[4] = "fantasy"; */
+    var random = Math.floor(Math.random() * r_font.length);
+    var chosenFont = r_font[random]; 
+    console.log(chosenFont)
+    document.getElementById("context").style.fontFamily = chosenFont;
+    }
+    fontChoose.addEventListener("click", setFont);
+    setFont();
+</script>
 </body>
 
 </html> 
